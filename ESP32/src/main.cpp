@@ -1,18 +1,18 @@
-#include "Sensor.h"
-#include "UARTCommunication.h"
+#include "API.h"
+#include "UARTReceiver.h"
 #include <Arduino.h>
 
 
-Sensor sensor;
-UARTCommunication uartComm;
+UARTReceiver uartReceiver;
+API api;
 
 void setup() {
-  sensor.init();
-  uartComm.init();
+  uartReceiver.init();
+  api.init();
 }
 
 void loop() {
-  float data = sensor.readData();
-  uartComm.sendData(data);
+  float data = uartReceiver.receiveData();
+  // Process and store the data
   delay(1000); // Adjust as needed
 }
