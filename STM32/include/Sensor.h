@@ -1,14 +1,17 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
+#include <DHT.h>
+
 class Sensor {
 public:
-  Sensor();
+  Sensor(uint8_t pin, uint8_t type);
   void init();
-  float readData();
+  float readTemperature();
+  float readHumidity();
 
 private:
-  // Add sensor-specific attributes
+  DHT _dht;
 };
 
 #endif // SENSOR_H

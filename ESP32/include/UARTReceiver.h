@@ -1,14 +1,20 @@
 #ifndef UARTRECEIVER_H
 #define UARTRECEIVER_H
 
+#include <Arduino.h>
+
 class UARTReceiver {
 public:
-  UARTReceiver();
+  UARTReceiver(uint32_t baudRate);
   void init();
-  float receiveData();
+  void receiveData();
+  float getTemperature() const;
+  float getHumidity() const;
 
 private:
-  // Add UART-specific attributes
+  uint32_t _baudRate;
+  float temperature;
+  float humidity;
 };
 
 #endif // UARTRECEIVER_H
