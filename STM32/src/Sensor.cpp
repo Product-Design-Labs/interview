@@ -1,14 +1,18 @@
 #include "Sensor.h"
 
-Sensor::Sensor() {
-  // Constructor implementation
-}
+Sensor::Sensor(uint8_t pin, uint8_t type) : _dht(pin, type) {}  // initilizes the dht instance with pin and type.
 
 void Sensor::init() {
-  // Initialize the sensor
+  _dht.begin();
 }
 
-float Sensor::readData() {
-  // Read data from the sensor and return
-  return 0.0; // Placeholder
+// Returns Temperature value read from the DHT22 Sensor.
+float Sensor::readTemperature() {
+  return _dht.readTemperature();
 }
+
+// Returns Humidity value read from the DHT22 Sensor.
+float Sensor::readHumidity() {
+  return _dht.readHumidity();
+}
+
